@@ -1,0 +1,57 @@
+Improvements = new Meteor.Collection("improvements");
+Likes = new Meteor.Collection("likes");
+Sugguestions = new Meteor.Collection("suggestions");
+
+
+if (Meteor.isClient) {
+
+  Template.improvement.events({
+      'click': function() {
+	  Improvements.update(this._id,{$inc: {vote: 1}});
+      }
+  });
+
+  Template.improvements.events({
+      'click input#addImprovement': function(){
+	  var name = document.getElementById('txtImprovement');
+	  if(name.value != ''){
+	      Improvements.insert({
+		  name: name.value,
+		  vote: 0,
+		  time: Date.now()
+	      });
+	  }
+	  name.value = '';
+      }
+  });
+
+  Template.improvements.improvements = function(){
+	return Improvements.find({}, {sort: {vote: -1, name: 1}});
+  };
+
+  Template.hello.greeting = function () {
+    return "Welcome to bergcommunity.";
+  };
+
+  Template.hello.events({
+    'click input' : function () {
+      // template data, if any, is available in 'this'
+      if (typeof console !== 'undefined')
+        console.log("You pressed the button");
+    }
+  });
+}
+
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    // code to run on server at startup
+      if (Improvements.find().count === 0) {
+	  var names = ["Security Cameras",
+		      "Improved Guards",
+		      "Blog",
+		      "Panic buttons"];
+	  for (var i=0; i< names.length; i++)
+	      Improvements.insert({name: names[i]});
+      }
+  });
+}

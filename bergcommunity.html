@@ -1,0 +1,81 @@
+<head>
+  <title>bergcommunity</title>
+</head>
+
+
+<body>
+  <div class = "container">
+    <div class = "row">
+      {{> improvements }}
+      {{> likes }}
+      {{> suggestions }}
+    </div>
+  </div>
+</body>
+
+<template name="improvements">
+  <div class = "span 3">
+    <h2>What is needed?</h2>
+    {{#each improvements}}
+    {{>improvement}}
+    {{/each}}
+    <input type="textbox" id="txtImprovement"  placeholder="Type what is needed"/>
+    <input type="button" id="addImprovement" value="Add" class="btn btn-primary"/>
+  </div>
+</template>
+
+<template name="likes">
+  <div class = "span 3">
+    <h2>What I like</h2>
+    {{#each likes}}
+    {{>like}}
+    {{/each}}
+    <input type="textbox" id="txtLike" placeholder="Type what you like"/>
+    <input type="button" id="addLike" value="Add" class="btn btn-primary"/>
+  </div>
+</template>
+
+<template name="suggestions">
+  <div class = "span 6">
+    <h2>Suggestions</h2>
+    {{#each suggestions}}
+    {{>suggestion}}
+    {{/each}}
+    <input type="textbox" id="txtSuggestion" placeholder="Type your suggestion"/>
+    <input type="button" id="addSuggestion" value="Add" class="btn btn-primary"/>
+  </div>
+</template>
+
+<template name="improvement">
+   <ul>
+      {{vote}} - {{name}}
+      <input type="button" class="btnVoteImprovement" value="+1"/>
+    </ul>
+</template>
+
+<template name="suggestion">
+  <ul>
+    {{body}}
+    <input type ="button" class="btnCommentSuggestion" value="Comment"/>
+    <input type="text" id={{_id}} class="txtComment" placholder="Type your Comment"/>
+    <br>
+    {{#each comments}}
+    {{>comment}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="comment">
+  <ul>
+  {{body}}
+  </ul>
+</template>
+
+<template name="like">
+   <ul>
+      {{vote}} - {{name}}
+      <input type="button" class="btnVoteLike" value="+1"/>
+    </ul>
+</template>
+
+
