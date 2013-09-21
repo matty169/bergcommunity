@@ -66,6 +66,18 @@ if (Meteor.isClient) {
       }
   });
 
+  Template.improvement.events({
+      'mouseenter': function(event) {
+	//event.currentTarget.getElementsByTagName('span')[0].style.display = 'none';
+	//event.currentTarget.getElementsByTagName('input')[0].style.display = 'block';
+      },
+      
+      'mouseleave': function(event) {
+	//event.currentTarget.getElementsByTagName('span')[0].style.display = 'block';
+	//event.currentTarget.getElementsByTagName('input')[0].style.display = 'none';
+      }
+  });
+
   Template.improvements.events({
       'click input#addImprovement': function(){
 	  var name = document.getElementById('txtImprovement');

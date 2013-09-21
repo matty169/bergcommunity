@@ -1,0 +1,23 @@
+/* CSS declarations go here */
+
+body{
+    font-size: 16px;
+    background-image: url('/images/wavegrid.png');
+   
+}
+
+
+li.pill{
+  padding:7px;
+  border: 7px;
+  margin: 7px;
+  border-radius: 8px;
+  
+}
+
+li.pill:hover{
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+}
+  

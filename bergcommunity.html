@@ -1,31 +1,75 @@
 <head>
   <title>bergcommunity</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 
 <body>
+  {{>banner}}
   <div class = "container">
-    <div class = "row">
+    <div class="line-separator"></div>
+    {{>about}}
+    <div class="line-separator"></div>
+    {{>feedback}}
+    <div class="line-separator"></div>
+    {{>team}}
+  </div>
+  {{>footer}}
+</body>
+
+<template name="about">
+  <div class = "row">
+    <h1>About</h1>
+    <p>
+      Heres comes some long ass text that would describe what which we are trying to achieve. Then we create this website for the greater good that allows people to have a voice and an opinion. We should create a better connection with the community. Other problems exists: such as the payments and the participation. We need to strive to get more people on board.
+    </p>
+  </div>
+</template>
+
+<template name="feedback">
+  <h1>Feedback</h1>
+  <div class = "row">
       {{> improvements }}
       {{> likes }}
       {{> suggestions }}
+  </div>
+</template>
+
+<template name="banner">
+  <div class ="row">
+    <div class="header"></div>
+    <div class = "col-md-5 banner-left">
+      <h1 class="the">THE</h1><br>
+      <h1>COMMUNITY</h1><br>
+    </div>
+    <div class = "col-md-2 banner-middle">
+       <img src="/images/logo.png" id="bannerLogo" class="img-responsive" alt="Responsive image" height="250" width="250">
+    </div>
+    <div class = "col-md-5 banner-right">
+      <h1>BERG</h1>
     </div>
   </div>
-</body>
+</template>
 
 <template name="improvements">
-  <div class = "span 3">
+  <div class = "col-md-3">
     <h2>What is needed?</h2>
-    {{#each improvements}}
-    {{>improvement}}
-    {{/each}}
+    <ul class="nav nav-pills nav-stacked">
+      {{#each improvements}}
+      {{>improvement}}
+      {{/each}}
+    </ul>
     <input type="textbox" id="txtImprovement"  placeholder="Type what is needed"/>
     <input type="button" id="addImprovement" value="Add" class="btn btn-primary"/>
   </div>
 </template>
 
 <template name="likes">
-  <div class = "span 3">
+  <div class = "col-md-3">
     <h2>What I like</h2>
     {{#each likes}}
     {{>like}}
@@ -36,33 +80,35 @@
 </template>
 
 <template name="suggestions">
-  <div class = "span 6">
+  <div class = "col-md-6">
     <h2>Suggestions</h2>
+    <ul class = "media-list">
     {{#each suggestions}}
     {{>suggestion}}
     {{/each}}
+    </ul>
     <input type="textbox" id="txtSuggestion" placeholder="Type your suggestion"/>
     <input type="button" id="addSuggestion" value="Add" class="btn btn-primary"/>
   </div>
 </template>
 
 <template name="improvement">
-   <ul>
-      {{vote}} - {{name}}
-      <input type="button" class="btnVoteImprovement" value="+1"/>
-    </ul>
+  <li class="pill">
+      {{name}}
+      <input type="button" class="btnVoteImprovement pull-left" value="+1"/>
+      <span class = "badge pull-right">{{vote}}</span>
+  </li>
 </template>
 
 <template name="suggestion">
-  <ul>
+  <li class = "media">
     {{body}}
-    <input type ="button" class="btnCommentSuggestion" value="Comment"/>
-    <input type="text" id={{_id}} class="txtComment" placholder="Type your Comment"/>
-    <br>
     {{#each comments}}
     {{>comment}}
     {{/each}}
-  </ul>
+  </li>
+  <input type ="button" class="btnCommentSuggestion" value="Comment"/>
+  <input type="text" id={{_id}} class="txtComment" placholder="Type your Comment"/>
 </template>
 
 <template name="comment">
@@ -78,4 +124,81 @@
     </ul>
 </template>
 
+
+<template name="team">
+  <h1>The Team</h1>
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="thumbnail">
+	<img src="/images/matthew.jpg" class="img-circle" >
+      </div>
+      <div class="caption">
+	<h3>Matthew Looi</h3>
+      </div>
+    </div>
+
+     <div class="col-md-3">
+      <div class="thumbnail">
+	<img src="/images/matthew.jpg" class="img-circle" >
+      </div>
+      <div class="caption">
+	<h3>Matthew Looi</h3>
+      </div>
+    </div>
+
+ <div class="col-md-3">
+      <div class="thumbnail">
+	<img src="/images/merelda.jpg" class="img-circle" >
+      </div>
+      <div class="caption">
+	<h3>Matthew Looi</h3>
+      </div>
+    </div>
+
+ <div class="col-md-3">
+      <div class="thumbnail">
+	<img src="/images/matthew.jpg" class="img-circle" >
+      </div>
+      <div class="caption">
+	<h3>Matthew Looi</h3>
+      </div>
+    </div>
+
+ <div class="col-md-3">
+      <div class="thumbnail">
+	<img src="/images/james.jpg" class="img-circle" >
+      </div>
+      <div class="caption">
+	<h3>Matthew Looi</h3>
+      </div>
+    </div>
+
+ <div class="col-md-3">
+      <div class="thumbnail">
+	<img src="/images/murray.jpg" class="img-circle" >
+      </div>
+      <div class="caption">
+	<h3>Matthew Looi</h3>
+      </div>
+    </div>
+
+ <div class="col-md-3">
+      <div class="thumbnail">
+	<img src="/images/matthew.jpg" class="img-circle" >
+      </div>
+      <div class="caption">
+	<h3>Matthew Looi</h3>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="footer">
+  <div class="footer">
+    <div class="container">
+      <p>Created by the Community for the Community</p>
+    </div>
+  </div>
+</template>
 

@@ -2,4 +2,11 @@
 
 body{
     background-image: url('/images/wavegrid.png');
+    font-size: 300%;
 }
+
+
+li.pill:hover{
+	background-color: red;
+    }
+  
